@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SimpleForm: View {
+public struct SimpleForm: View {
     @ObservedObject var model:SimpleFormModel = SimpleFormModel()
     var body: some View {
         Form {
@@ -19,8 +19,8 @@ struct SimpleForm: View {
     }
 }
 
-struct SimpleForm_Previews: PreviewProvider {
-    static var previews: some View {
-        SimpleForm()
-    }
-}
+//struct SimpleForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SimpleForm()
+//    }
+//}

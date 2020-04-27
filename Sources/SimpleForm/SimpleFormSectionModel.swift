@@ -8,6 +8,6 @@
 
 import SwiftUI
 
-class SimpleFormSectionModel:ObservableObject {
+public class SimpleFormSectionModel:ObservableObject {
     @Published var fields:[SimpleFormField] = []
 }

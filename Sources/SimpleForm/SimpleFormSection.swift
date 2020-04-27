@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SimpleFormSection: View, Identifiable {
+public struct SimpleFormSection: View, Identifiable {
     var id = UUID()
     var model:SimpleFormSectionModel = SimpleFormSectionModel()
     

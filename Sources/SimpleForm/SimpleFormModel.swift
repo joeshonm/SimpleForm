@@ -8,6 +8,6 @@
 
 import SwiftUI
 
-class SimpleFormModel:ObservableObject {
+public class SimpleFormModel:ObservableObject {
     @Published var sections:[SimpleFormSection] = []
 }

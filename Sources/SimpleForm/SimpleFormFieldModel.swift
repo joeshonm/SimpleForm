@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class SimpleFormFieldModel:ObservableObject {
+public class SimpleFormFieldModel:ObservableObject {
     @Published var type:SimpleFormFieldType = .text
     @Published var label:String = ""
     @Published var name:String = ""

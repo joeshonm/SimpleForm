@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum SimpleFormFieldType {
+public enum SimpleFormFieldType {
     case text
     case picker
 }
