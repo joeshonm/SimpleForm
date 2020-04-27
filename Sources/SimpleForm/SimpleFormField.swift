@@ -10,16 +10,16 @@ import SwiftUI
 
 public struct SimpleFormField: View, Identifiable {
     public var id = UUID()
-    @ObservedObject var model:SimpleFormFieldModel = SimpleFormFieldModel()
+    @ObservedObject public var model:SimpleFormFieldModel = SimpleFormFieldModel()
     
-    init(textField label:String,name:String,value:Any) {
+    public init(textField label:String,name:String,value:Any) {
         self.model.type = .text
         self.model.label = label
         self.model.name = name
         self.model.value = value
     }
     
-    init(pickerField label:String,name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView) {
+    public init(pickerField label:String,name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView) {
         self.model.type = .picker
         self.model.label = label
         self.model.name = name
