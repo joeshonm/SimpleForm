@@ -1,5 +1,5 @@
 //
-//  SimpleForm.swift
+//  SimpleFormView.swift
 //  SimpleFormExample
 //
 //  Created by JoeShon Monroe on 4/26/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct SimpleForm: View {
+struct SimpleFormView: View {
     @ObservedObject var model:SimpleFormModel = SimpleFormModel()
     var body: some View {
         Form {
