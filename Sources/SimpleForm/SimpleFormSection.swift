@@ -12,6 +12,10 @@ public struct SimpleFormSection: View, Identifiable {
     public var id = UUID()
     var model:SimpleFormSectionModel = SimpleFormSectionModel()
     
+    public init() {
+        
+    }
+    
     public var body: some View {
         Section {
             ForEach(self.model.fields, id: \.id) { field in

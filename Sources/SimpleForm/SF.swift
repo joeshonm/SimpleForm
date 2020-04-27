@@ -10,6 +10,11 @@ import SwiftUI
 
 public struct SF: View {
     @ObservedObject public var model:SimpleFormModel = SimpleFormModel()
+    
+    public init() {
+        
+    }
+    
     public var body: some View {
         Form {
             ForEach(self.model.sections, id: \.id) { jamFormSection in
