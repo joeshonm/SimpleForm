@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SimpleFormField: View, Identifiable {
+public struct SimpleFormField: View, Identifiable {
     var id = UUID()
     @ObservedObject var model:SimpleFormFieldModel = SimpleFormFieldModel()
     

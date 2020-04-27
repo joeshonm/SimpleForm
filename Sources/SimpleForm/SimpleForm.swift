@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SimpleForm: View {
+public struct SimpleForm: View {
     @ObservedObject var model:SimpleFormModel = SimpleFormModel()
     var body: some View {
         Form {
