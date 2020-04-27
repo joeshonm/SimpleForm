@@ -9,5 +9,5 @@
 import SwiftUI
 
 public class SimpleFormSectionModel:ObservableObject {
-    @Published var fields:[SimpleFormField] = []
+    @Published public var fields:[SimpleFormField] = []
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct SimpleFormSection: View, Identifiable {
     public var id = UUID()
-    var model:SimpleFormSectionModel = SimpleFormSectionModel()
+    @ObservedObject public var model:SimpleFormSectionModel = SimpleFormSectionModel()
     
     public init() {
         

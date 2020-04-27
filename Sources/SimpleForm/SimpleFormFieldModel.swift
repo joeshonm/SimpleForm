@@ -9,11 +9,11 @@
 import SwiftUI
 
 public class SimpleFormFieldModel:ObservableObject {
-    @Published var type:SimpleFormFieldType = .text
-    @Published var label:String = ""
-    @Published var name:String = ""
-    @Published var value:Any = ""
-    @Published var pickerSelection:Int = 0
-    @Published var options:[Any] = []
-    @Published var pickerDisplay:AnyView = AnyView(EmptyView())
+    @Published public var type:SimpleFormFieldType = .text
+    @Published public var label:String = ""
+    @Published public var name:String = ""
+    @Published public var value:Any = ""
+    @Published public var pickerSelection:Int = 0
+    @Published public var options:[Any] = []
+    @Published public var pickerDisplay:AnyView = AnyView(EmptyView())
 }
