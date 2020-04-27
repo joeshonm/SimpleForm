@@ -9,10 +9,10 @@
 import SwiftUI
 
 public struct SimpleFormSection: View, Identifiable {
-    var id = UUID()
+    public var id = UUID()
     var model:SimpleFormSectionModel = SimpleFormSectionModel()
     
-    var body: some View {
+    public var body: some View {
         Section {
             ForEach(self.model.fields, id: \.id) { field in
                 field

@@ -9,7 +9,7 @@
 import SwiftUI
 
 public struct SimpleFormField: View, Identifiable {
-    var id = UUID()
+    public var id = UUID()
     @ObservedObject var model:SimpleFormFieldModel = SimpleFormFieldModel()
     
     init(textField label:String,name:String,value:Any) {
@@ -31,7 +31,7 @@ public struct SimpleFormField: View, Identifiable {
     
     
     
-    var body: some View {
+    public var body: some View {
         Group {
             if self.model.type == .text {
                 TextField(self.model.label, text: Binding(get: {
