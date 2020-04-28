@@ -37,30 +37,29 @@ public struct SimpleFormField: View, Identifiable {
     public var body: some View {
         
         Group {
-            VStack {
-                if self.model.labelPosition == .above {
-                    Text(self.model.label).padding(.all, 0)
+            
+            if self.model.labelPosition == .above {
+                Text(self.model.label)
+            }
+            if self.model.type == .text {
+                TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
+                    return self.model.value as! String
+                }, set: { (newValue) in
+                    self.model.value = newValue
+                }))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .border(Color.blue)
+            } else if(self.model.type == .picker) {
+                Picker(selection: Binding(get: {
+                    return self.model.pickerSelection
+                }, set: { (newValue) in
+                    self.model.pickerSelection = newValue
+                    self.model.value = self.model.options[newValue]
+                }), label: Text("\(self.model.labelPosition == .placeholder ? self.model.label : "")")) {
+                    self.model.pickerDisplay
                 }
-                if self.model.type == .text {
-                    TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
-                        return self.model.value as! String
-                    }, set: { (newValue) in
-                        self.model.value = newValue
-                    }))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                } else if(self.model.type == .picker) {
-                    Picker(selection: Binding(get: {
-                        return self.model.pickerSelection
-                    }, set: { (newValue) in
-                        self.model.pickerSelection = newValue
-                        self.model.value = self.model.options[newValue]
-                    }), label: Text("\(self.model.labelPosition == .placeholder ? self.model.label : "")")) {
-                        self.model.pickerDisplay
-                    }
-                } else {
-                    EmptyView()
-                }
+            } else {
+                EmptyView()
             }
         }
         
