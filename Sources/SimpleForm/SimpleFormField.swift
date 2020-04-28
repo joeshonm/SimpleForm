@@ -15,6 +15,7 @@ public struct SimpleFormField: View, Identifiable {
     public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any) {
         self.model.type = .text
         self.model.label = label
+        self.model.labelPosition = labelPosition
         self.model.name = name
         self.model.value = value
     }
