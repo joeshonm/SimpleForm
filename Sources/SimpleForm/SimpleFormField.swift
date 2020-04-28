@@ -39,7 +39,7 @@ public struct SimpleFormField: View, Identifiable {
                     return self.model.value as! String
                 }, set: { (newValue) in
                     self.model.value = newValue
-                }))
+                })).background(Color.red).foregroundColor(Color.white)
             } else if(self.model.type == .picker) {
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
