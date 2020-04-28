@@ -11,6 +11,7 @@ import SwiftUI
 public class SimpleFormFieldModel:ObservableObject {
     @Published public var type:SimpleFormFieldType = .text
     @Published public var label:String = ""
+    @Published public var labelPosition:SimpleFormFieldLabelPosition = .placeholder
     @Published public var name:String = ""
     @Published public var value:Any = ""
     @Published public var pickerSelection:Int = 0

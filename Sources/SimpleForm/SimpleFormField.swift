@@ -19,9 +19,10 @@ public struct SimpleFormField: View, Identifiable {
         self.model.value = value
     }
     
-    public init(pickerField label:String,name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView) {
+    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView) {
         self.model.type = .picker
         self.model.label = label
+        self.model.labelPosition = labelPosition
         self.model.name = name
         self.model.pickerSelection = selection
         self.model.options = options
@@ -35,7 +36,10 @@ public struct SimpleFormField: View, Identifiable {
     public var body: some View {
         Group {
             if self.model.type == .text {
-                TextField(self.model.label, text: Binding(get: {
+                if self.model.labelPosition == .above {
+                    Text(self.model.label).padding(.bottom, 10)
+                }
+                TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
                     return self.model.value as! String
                 }, set: { (newValue) in
                     self.model.value = newValue
