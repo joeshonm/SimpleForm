@@ -34,7 +34,10 @@ public struct SF: View {
             ForEach(self.model.sections, id: \.id) { jamFormSection in
                 jamFormSection
             }
-        }.onAppear {
+        }
+        .listStyle(GroupedListStyle())
+        .environment(\.horizontalSizeClass, .regular)
+        .onAppear {
             UITableView.appearance().separatorStyle = .none
         }
     }
