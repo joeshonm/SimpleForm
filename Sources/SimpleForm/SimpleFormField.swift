@@ -45,12 +45,15 @@ public struct SimpleFormField: View, Identifiable {
                     self.model.value = newValue
                 })).background(Color.red).foregroundColor(Color.white)
             } else if(self.model.type == .picker) {
+                if self.model.labelPosition == .above {
+                    Text(self.model.label).padding(.bottom, 10)
+                }
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
                 }, set: { (newValue) in
                     self.model.pickerSelection = newValue
                     self.model.value = self.model.options[newValue]
-                }), label: Text("\(self.model.label)")) {
+                }), label: self.model.labelPosition == .placeholder ? Text("\(self.model.label)") : EmptyView())) {
                     self.model.pickerDisplay
                 }
             } else {
