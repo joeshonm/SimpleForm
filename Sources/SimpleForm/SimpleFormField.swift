@@ -38,7 +38,7 @@ public struct SimpleFormField: View, Identifiable {
         
         Group {
             if self.model.labelPosition == .above {
-                Text(self.model.label)
+                Text(self.model.label).listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
             if self.model.type == .text {
                 TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
