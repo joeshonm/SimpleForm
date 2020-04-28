@@ -52,7 +52,8 @@ struct ContentView: View {
         
         return NavigationView {
             jamForm
-                .navigationBarTitle("Simple Form", displayMode: .inline).navigationBarItems(trailing: Button(action: {
+                .navigationBarTitle("Simple Form", displayMode: .inline)
+                .navigationBarItems(trailing: Button(action: {
                     let formValues = self.jamForm.getValues()
                     print(formValues)
                 }){
