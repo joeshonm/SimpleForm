@@ -35,8 +35,7 @@ public struct SF: View {
                 jamFormSection
             }
         }
-        .listStyle(GroupedListStyle())
-        .environment(\.horizontalSizeClass, .regular)
+        .environment(\.horizontalSizeClass, .none)
         .onAppear {
             UITableView.appearance().separatorStyle = .none
         }
