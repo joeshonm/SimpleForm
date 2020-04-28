@@ -26,6 +26,7 @@ public struct SimpleFormField: View, Identifiable {
         self.model.pickerSelection = selection
         self.model.options = options
         self.model.pickerDisplay = display(options)
+        self.model.value = self.model.options[selection]
     }
     
     
