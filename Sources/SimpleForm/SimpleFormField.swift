@@ -12,7 +12,7 @@ public struct SimpleFormField: View, Identifiable {
     public var id = UUID()
     @ObservedObject public var model:SimpleFormFieldModel = SimpleFormFieldModel()
     
-    public init(textField label:String,name:String,value:Any) {
+    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any) {
         self.model.type = .text
         self.model.label = label
         self.model.name = name
