@@ -38,14 +38,14 @@ public struct SimpleFormField: View, Identifiable {
   
         Group {
             if self.model.labelPosition == .above {
-                Text(self.model.label).padding(.bottom, 10)
+                Text(self.model.label)
             }
             if self.model.type == .text {
                 TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
                     return self.model.value as! String
                 }, set: { (newValue) in
                     self.model.value = newValue
-                })).background(Color.red).foregroundColor(Color.white)
+                    })).textFieldStyle(RoundedBorderTextFieldStyle())
             } else if(self.model.type == .picker) {
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
