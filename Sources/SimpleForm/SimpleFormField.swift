@@ -34,26 +34,24 @@ public struct SimpleFormField: View, Identifiable {
     
     
     public var body: some View {
+  
         Group {
+            if self.model.labelPosition == .above {
+                Text(self.model.label).padding(.bottom, 10)
+            }
             if self.model.type == .text {
-                if self.model.labelPosition == .above {
-                    Text(self.model.label).padding(.bottom, 10)
-                }
                 TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
                     return self.model.value as! String
                 }, set: { (newValue) in
                     self.model.value = newValue
                 })).background(Color.red).foregroundColor(Color.white)
             } else if(self.model.type == .picker) {
-                if self.model.labelPosition == .above {
-                    Text(self.model.label).padding(.bottom, 10)
-                }
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
                 }, set: { (newValue) in
                     self.model.pickerSelection = newValue
                     self.model.value = self.model.options[newValue]
-                }), label: self.model.labelPosition == .placeholder ? Text("\(self.model.label)") : EmptyView())) {
+                }), label: Text("\(self.model.labelPosition == .placeholder ? self.model.label : "")")) {
                     self.model.pickerDisplay
                 }
             } else {
