@@ -32,10 +32,9 @@ public struct SF: View {
     public var body: some View {
         Form {
             ForEach(self.model.sections, id: \.id) { jamFormSection in
-                jamFormSection
+                jamFormSection.padding(.all, 0)
             }
         }
-        .environment(\.horizontalSizeClass, .none)
         .onAppear {
             UITableView.appearance().separatorStyle = .none
         }
