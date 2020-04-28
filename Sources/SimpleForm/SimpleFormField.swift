@@ -45,7 +45,6 @@ public struct SimpleFormField: View, Identifiable {
                 }, set: { (newValue) in
                     self.model.pickerSelection = newValue
                     self.model.value = self.model.options[newValue]
-                    print(self.model.value)
                 }), label: Text("\(self.model.label)")) {
                     self.model.pickerDisplay
                 }
