@@ -34,6 +34,8 @@ public struct SF: View {
             ForEach(self.model.sections, id: \.id) { jamFormSection in
                 jamFormSection
             }
+        }.onAppear {
+            UITableView.appearance().separatorStyle = .none
         }
     }
 }
