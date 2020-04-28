@@ -35,7 +35,7 @@ public struct SimpleFormField: View, Identifiable {
     
     
     public var body: some View {
-  
+        
         Group {
             if self.model.labelPosition == .above {
                 Text(self.model.label)
@@ -45,7 +45,9 @@ public struct SimpleFormField: View, Identifiable {
                     return self.model.value as! String
                 }, set: { (newValue) in
                     self.model.value = newValue
-                    })).textFieldStyle(RoundedBorderTextFieldStyle())
+                }))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             } else if(self.model.type == .picker) {
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
