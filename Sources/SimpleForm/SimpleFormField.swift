@@ -69,6 +69,13 @@ public struct SimpleFormField: View, Identifiable {
             } else {
                 EmptyView()
             }
+            
+            if self.model.errors.count > 0 {
+                ForEach(0..<self.model.errors.count) {
+                    Text("\($0)").font(.footnote)
+                }
+               
+            }
         }
         
     }
