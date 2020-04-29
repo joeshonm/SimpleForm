@@ -36,7 +36,7 @@ public struct SimpleFormField: View, Identifiable {
     
     public var body: some View {
         
-        Group {
+        VStack(alignment: .leading) {
             
             if self.model.labelPosition == .above {
                 Text(self.model.label)
