@@ -16,7 +16,7 @@ public struct SF: View {
     }
     
     public func isValid() -> Bool {
-        let errors:[Bool] = []
+        var errors:[Bool] = []
         
         for section in self.model.sections {
             let fields = section.model.fields
@@ -33,6 +33,7 @@ public struct SF: View {
                     
                     
                     if (validationResult == false) {
+                        errors.append(false)
                         field.model.errors.append("Please enter a valid email address.")
                     }
                 }
