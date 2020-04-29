@@ -21,8 +21,14 @@ public struct SimpleFormValidation {
     
     public func validateRegex(value:Any, regex:String) -> Bool {
         let range = NSRange(location: 0, length: (value as! String).utf16.count)
-        let regex = try! NSRegularExpression(pattern: #"\(regex)"#)
-        let validationResult = regex.firstMatch(in: (value as! String), options: [], range: range) != nil
-        return validationResult
+        do {
+            let regex = try NSRegularExpression(pattern: "#\(regex)#")
+            let validationResult = regex.firstMatch(in: (value as! String), options: [], range: range) != nil
+            return validationResult
+        } catch {
+            return false
+        }
+        
+        
     }
 }
