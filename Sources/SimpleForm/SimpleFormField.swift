@@ -12,7 +12,7 @@ public struct SimpleFormField: View, Identifiable {
     public var id = UUID()
     @ObservedObject public var model:SimpleFormFieldModel = SimpleFormFieldModel()
     
-    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any,validation:[SimpleFormValidationType]) {
+    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any,validation:[SimpleFormValidationType] = []) {
         self.model.type = .text
         self.model.label = label
         self.model.labelPosition = labelPosition
@@ -21,7 +21,7 @@ public struct SimpleFormField: View, Identifiable {
         self.model.validation = validation
     }
     
-    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView, validation:[SimpleFormValidationType]) {
+    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView, validation:[SimpleFormValidationType] = []) {
         self.model.type = .picker
         self.model.label = label
         self.model.labelPosition = labelPosition
