@@ -47,6 +47,7 @@ public struct SimpleFormField: View, Identifiable {
                 }, set: { (newValue) in
                     self.model.value = newValue
                 }))
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .padding(.all, 5)
                     .textFieldStyle(PlainTextFieldStyle())
                     .overlay(
