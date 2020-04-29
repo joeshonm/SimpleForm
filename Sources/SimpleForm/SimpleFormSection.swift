@@ -1,6 +1,6 @@
 //
 //  SimpleFormSection.swift
-//  SimpleFormExample
+//  SimpleForm
 //
 //  Created by JoeShon Monroe on 4/26/20.
 //  Copyright © 2020 JoeShon Monroe. All rights reserved.
@@ -21,7 +21,7 @@ public struct SimpleFormSection: View, Identifiable {
             ForEach(self.model.fields, id: \.id) { field in
                 field
             }
-        }
+        }.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 

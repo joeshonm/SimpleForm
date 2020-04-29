@@ -1,5 +1,5 @@
 //
-//  SimpleFormSectionModel.swift
+//  SimpleFormValidationType.swift
 //  SimpleForm
 //
 //  Created by JoeShon Monroe on 4/26/20.
@@ -8,6 +8,8 @@
 
 import SwiftUI
 
-public class SimpleFormSectionModel:ObservableObject {
-    @Published public var fields:[SimpleFormField] = []
+public enum SimpleFormValidationType {
+    case required
+    case email
+    case regex(String)
 }

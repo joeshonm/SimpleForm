@@ -1,6 +1,6 @@
 //
 //  SimpleFormField.swift
-//  SimpleFormExample
+//  SimpleForm
 //
 //  Created by JoeShon Monroe on 4/26/20.
 //  Copyright © 2020 JoeShon Monroe. All rights reserved.
@@ -12,15 +12,16 @@ public struct SimpleFormField: View, Identifiable {
     public var id = UUID()
     @ObservedObject public var model:SimpleFormFieldModel = SimpleFormFieldModel()
     
-    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any) {
+    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any,validation:[SimpleFormValidationType]) {
         self.model.type = .text
         self.model.label = label
         self.model.labelPosition = labelPosition
         self.model.name = name
         self.model.value = value
+        self.model.validation = validation
     }
     
-    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView) {
+    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView, validation:[SimpleFormValidationType]) {
         self.model.type = .picker
         self.model.label = label
         self.model.labelPosition = labelPosition
@@ -29,6 +30,7 @@ public struct SimpleFormField: View, Identifiable {
         self.model.options = options
         self.model.pickerDisplay = display(options)
         self.model.value = self.model.options[selection]
+        self.model.validation = validation
     }
     
     

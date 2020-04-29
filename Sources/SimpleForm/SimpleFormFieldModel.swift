@@ -1,6 +1,6 @@
 //
 //  SimpleFormFieldModel.swift
-//  SimpleFormExample
+//  SimpleForm
 //
 //  Created by JoeShon Monroe on 4/26/20.
 //  Copyright © 2020 JoeShon Monroe. All rights reserved.
@@ -17,4 +17,6 @@ public class SimpleFormFieldModel:ObservableObject {
     @Published public var pickerSelection:Int = 0
     @Published public var options:[Any] = []
     @Published public var pickerDisplay:AnyView = AnyView(EmptyView())
+    @Published public var validation:[SimpleFormValidationType] = []
+    @Published public var errors:[String] = []
 }
