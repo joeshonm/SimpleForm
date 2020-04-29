@@ -11,5 +11,5 @@ import SwiftUI
 public enum SimpleFormValidationType {
     case required
     case email
-    case regex(String)
+    case regex(String, String)
 }

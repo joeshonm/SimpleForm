@@ -39,6 +39,11 @@ public struct SF: View {
                                 errors.append(false)
                                 field.model.errors.append("This field is required.")
                             }
+                        case .regex(let regex, let errorMessage):
+                            if (validator.validateRegex(value: field.model.value, regex: regex) == false) {
+                                errors.append(false)
+                                field.model.errors.append(errorMessage)
+                            }
                         default:
                             ()
                         }
@@ -82,7 +87,7 @@ public struct SF: View {
             }
         }
         .onAppear {
-            UITableView.appearance().backgroundColor = .clear
+//            UITableView.appearance().backgroundColor = .clear
             UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
             UITableView.appearance().tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
             UITableView.appearance().separatorStyle = .none
