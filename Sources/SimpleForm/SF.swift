@@ -37,6 +37,9 @@ public struct SF: View {
         }
         .onAppear {
             UITableView.appearance().separatorStyle = .none
+            UITableView.appearance().tableHeaderView = .none
+            UITableView.appearance().tableFooterView = .none
+            UITableView.appearance().backgroundColor = .clear
         }
     }
 }
