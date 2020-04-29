@@ -50,7 +50,7 @@ public struct SimpleFormField: View, Identifiable {
                     .padding(.all, 5)
                     .textFieldStyle(PlainTextFieldStyle())
                     .overlay(
-                        RoundedRectangle(cornerRadius: 8)
+                        RoundedRectangle(cornerRadius: 4)
                             .stroke(Color.gray, lineWidth: 1)
                     )
                     
