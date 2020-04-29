@@ -49,8 +49,9 @@ public struct SimpleFormField: View, Identifiable {
                 }))
                     .padding(.all, 5)
                     .textFieldStyle(PlainTextFieldStyle())
-                    .border(Color.blue, width: 1)
                     .cornerRadius(4)
+                    .border(Color.blue, width: 1)
+                    
             } else if(self.model.type == .picker) {
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
