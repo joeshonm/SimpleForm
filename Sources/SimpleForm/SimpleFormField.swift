@@ -47,6 +47,7 @@ public struct SimpleFormField: View, Identifiable {
                 }, set: { (newValue) in
                     self.model.value = newValue
                 }))
+                    .padding(.all, 5)
                     .textFieldStyle(PlainTextFieldStyle())
                     .border(Color.blue, width: 1)
                     .cornerRadius(4)
