@@ -32,7 +32,7 @@ public struct SF: View {
     public var body: some View {
         Form {
             ForEach(self.model.sections, id: \.id) { jamFormSection in
-                jamFormSection.padding(.all, 0)
+                jamFormSection
             }
         }
         .onAppear {
