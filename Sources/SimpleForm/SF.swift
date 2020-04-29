@@ -36,10 +36,12 @@ public struct SF: View {
             }
         }
         .onAppear {
-            UITableView.appearance().separatorStyle = .none
-            UITableView.appearance().tableHeaderView = .none
-            UITableView.appearance().tableFooterView = .none
             UITableView.appearance().backgroundColor = .clear
+            UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+            UITableView.appearance().tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+            UITableView.appearance().separatorStyle = .none
+            UITableView.appearance().layoutMargins = UIEdgeInsets.zero
+            UITableView.appearance().sectionHeaderHeight = 0
         }
     }
 }
