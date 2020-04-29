@@ -71,8 +71,8 @@ public struct SimpleFormField: View, Identifiable {
             }
             
             if self.model.errors.count > 0 {
-                ForEach(0..<self.model.errors.count) {
-                    Text("\(self.model.errors[$0])").font(.footnote)
+                ForEach(self.model.errors, id: \.self) { error in
+                    Text("\(error)").font(.footnote)
                 }
                
             }
