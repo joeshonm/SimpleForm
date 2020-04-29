@@ -54,7 +54,7 @@ public struct SimpleFormField: View, Identifiable {
                     .textFieldStyle(PlainTextFieldStyle())
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.gray, lineWidth: 1)
+                            .stroke(self.model.errors.count > 0 ? Color.red : Color.gray, lineWidth: 1)
                     )
                     
             } else if(self.model.type == .picker) {
