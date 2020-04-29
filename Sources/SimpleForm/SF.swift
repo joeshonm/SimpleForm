@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct SF: View {
     @ObservedObject public var model:SimpleFormModel = SimpleFormModel()
-    
+    let validator = SimpleFormValidation()
     public init() {
         
     }
@@ -27,15 +27,24 @@ public struct SF: View {
                 if (field.model.validation.count > 0) {
                     field.model.errors.removeAll()
                     
-                    let range = NSRange(location: 0, length: (field.model.value as! String).utf16.count)
-                    let regex = try! NSRegularExpression(pattern: #"[a-z0-9]+([-+._][a-z0-9]+){0,2}@.*?(\.(a(?:[cdefgilmnoqrstuwxz]|ero|(?:rp|si)a)|b(?:[abdefghijmnorstvwyz]iz)|c(?:[acdfghiklmnoruvxyz]|at|o(?:m|op))|d[ejkmoz]|e(?:[ceghrstu]|du)|f[ijkmor]|g(?:[abdefghilmnpqrstuwy]|ov)|h[kmnrtu]|i(?:[delmnoqrst]|n(?:fo|t))|j(?:[emop]|obs)|k[eghimnprwyz]|l[abcikrstuvy]|m(?:[acdeghklmnopqrstuvwxyz]|il|obi|useum)|n(?:[acefgilopruz]|ame|et)|o(?:m|rg)|p(?:[aefghklmnrstwy]|ro)|qa|r[eosuw]|s[abcdeghijklmnortuvyz]|t(?:[cdfghjklmnoprtvwz]|(?:rav)?el)|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw])\b){1,2}"#)
-                    let validationResult = regex.firstMatch(in: (field.model.value as! String), options: [], range: range) != nil
-                    
-                    
-                    if (validationResult == false) {
-                        errors.append(false)
-                        field.model.errors.append("Please enter a valid email address.")
+                    for validation in field.model.validation {
+                        switch validation {
+                        case .email:
+                            if (validator.validateEmail(value: field.model.value) == false) {
+                                errors.append(false)
+                                field.model.errors.append("Please enter a valid email address.")
+                            }
+                        case .required:
+                            if (validator.validateEmpty(value: field.model.value) == false) {
+                                errors.append(false)
+                                field.model.errors.append("This field is required.")
+                            }
+                        default:
+                            ()
+                        }
                     }
+
+                    
                 }
                 
             }
