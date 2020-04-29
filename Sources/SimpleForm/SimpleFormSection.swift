@@ -21,7 +21,7 @@ public struct SimpleFormSection: View, Identifiable {
             ForEach(self.model.fields, id: \.id) { field in
                 field
             }
-        }
+        }.listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 
