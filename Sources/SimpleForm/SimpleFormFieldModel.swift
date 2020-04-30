@@ -19,4 +19,5 @@ public class SimpleFormFieldModel:ObservableObject {
     @Published public var pickerDisplay:AnyView = AnyView(EmptyView())
     @Published public var validation:[SimpleFormValidationType] = []
     @Published public var errors:[String] = []
+    @Published public var keyboardType:UIKeyboardType = UIKeyboardType.default
 }

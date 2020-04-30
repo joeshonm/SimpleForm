@@ -12,13 +12,14 @@ public struct SimpleFormField: View, Identifiable {
     public var id = UUID()
     @ObservedObject public var model:SimpleFormFieldModel = SimpleFormFieldModel()
     
-    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any,validation:[SimpleFormValidationType] = []) {
+    public init(textField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,value:Any,validation:[SimpleFormValidationType] = [], keyboardType:UIKeyboardType = UIKeyboardType.default) {
         self.model.type = .text
         self.model.label = label
         self.model.labelPosition = labelPosition
         self.model.name = name
         self.model.value = value
         self.model.validation = validation
+        self.model.keyboardType = keyboardType
     }
     
     public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView, validation:[SimpleFormValidationType] = []) {
@@ -49,6 +50,7 @@ public struct SimpleFormField: View, Identifiable {
                 }, set: { (newValue) in
                     self.model.value = newValue
                 }))
+                    .keyboardType(self.model.keyboardType)
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .padding(.all, 5)
                     .textFieldStyle(PlainTextFieldStyle())

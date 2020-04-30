@@ -44,8 +44,6 @@ public struct SF: View {
                                 errors.append(false)
                                 field.model.errors.append(errorMessage)
                             }
-                        default:
-                            ()
                         }
                     }
 
