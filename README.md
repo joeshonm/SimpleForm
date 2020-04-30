@@ -13,8 +13,8 @@ SimpleForm is a swift package and can be installed using the Apple Developer gui
 [How to add a Swift Package to your project.](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)
 
 ## Preview
-<img src="https://github.com/joeshonm/SimpleForm/blob/master/Images/simpleform.png" width="49%">
-<img src="https://github.com/joeshonm/SimpleForm/blob/master/Images/simpleform-errors.png" width="49%">
+<img src="https://github.com/joeshonm/SimpleForm/blob/master/Images/simpleform.png" width="49%" style="display: inline-block;">
+<img src="https://github.com/joeshonm/SimpleForm/blob/master/Images/simpleform-errors.png" width="49%" style="display: inline-block;">
 
 ## Full Example
 
