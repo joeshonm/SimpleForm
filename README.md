@@ -20,18 +20,21 @@ import SimpleForm
 struct ContentView: View {
     
     var jamForm = SF()
+    
     var body: some View {
         
         // Section One
         let sectionOne = SimpleFormSection()
-        sectionOne.model.fields.append(SimpleFormField(textField: "First Name", name: "first_name", value: ""))
-        sectionOne.model.fields.append(SimpleFormField(textField: "Last Name", name: "last_name", value: ""))
         
+        sectionOne.model.fields.append(SimpleFormField(textField: "First Name", labelPosition: .above, name: "first_name", value: "", validation: [.email]))
+        
+        sectionOne.model.fields.append(SimpleFormField(textField: "Last Name", name: "last_name", value: "", validation:[.required, .regex(#"^\d*$"#, "Please enter numbers only.")]))
         
         self.jamForm.model.sections.append(sectionOne)
         
         // Section Two
         let sectionTwo = SimpleFormSection()
+        
         sectionTwo.model.fields.append(SimpleFormField(pickerField: "Greetings", name: "greeting", selection: 2, options: [1,13,24], display: { options in
             return  AnyView(
                 
@@ -47,19 +50,26 @@ struct ContentView: View {
             
             
         }))
-        
+
         self.jamForm.model.sections.append(sectionTwo)
         
         return NavigationView {
             jamForm
-                .navigationBarTitle("Simple Form", displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: {
+                .navigationBarTitle("Simple Form", displayMode: .inline).navigationBarItems(trailing: Button(action: {
                     let formValues = self.jamForm.getValues()
                     print(formValues)
+                    let formValid = self.jamForm.isValid()
+                    print("Form Valid: ", formValid)
                 }){
                     Text("Submit")
                 })
         }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
 ```
