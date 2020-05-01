@@ -35,9 +35,11 @@ struct ContentView: View {
         // Section One
         let sectionOne = SimpleFormSection()
         
-        sectionOne.model.fields.append(SimpleFormField(textField: "First Name", labelPosition: .above, name: "first_name", value: "", validation: [.email]))
+        sectionOne.model.fields.append(SimpleFormField(textField: "First Name", labelPosition: .above, name: "first_name", value: "", validation: [.required]))
         
         sectionOne.model.fields.append(SimpleFormField(textField: "Last Name", name: "last_name", value: "", validation:[.required, .regex(#"^\d*$"#, "Please enter numbers only.")]))
+        
+        sectionOne.model.fields.append(SimpleFormField(textField: "Email", labelPosition: .above, name: "email", value: "", validation: [.required, .email], keyboardType: .emailAddress))
         
         self.jamForm.model.sections.append(sectionOne)
         
@@ -64,8 +66,7 @@ struct ContentView: View {
         
         return NavigationView {
             jamForm
-                .navigationBarTitle("Simple Form", displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: {
+                .navigationBarTitle("Simple Form", displayMode: .inline).navigationBarItems(trailing: Button(action: {
                     let formValues = self.jamForm.getValues()
                     print(formValues)
                     let formValid = self.jamForm.isValid()
