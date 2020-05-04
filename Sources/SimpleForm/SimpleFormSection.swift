@@ -25,8 +25,3 @@ public struct SimpleFormSection: View, Identifiable {
     }
 }
 
-//struct SimpleFormSection_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SimpleFormSection()
-//    }
-//}

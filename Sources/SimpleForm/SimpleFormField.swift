@@ -34,6 +34,13 @@ public struct SimpleFormField: View, Identifiable {
         self.model.validation = validation
     }
     
+    public init(toggleField label:String, name:String,value:Bool = false) {
+        self.model.type = .toggle
+        self.model.label = label
+        self.model.name = name
+        self.model.value = value
+    }
+    
     
     
     
@@ -57,8 +64,8 @@ public struct SimpleFormField: View, Identifiable {
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
                             .stroke(self.model.errors.count > 0 ? Color.red : Color.gray, lineWidth: 1)
-                    )
-                    
+                )
+                
             } else if(self.model.type == .picker) {
                 Picker(selection: Binding(get: {
                     return self.model.pickerSelection
@@ -68,6 +75,12 @@ public struct SimpleFormField: View, Identifiable {
                 }), label: Text("\(self.model.labelPosition == .placeholder ? self.model.label : "")")) {
                     self.model.pickerDisplay
                 }
+            } else if(self.model.type == .toggle) {
+                Toggle(self.model.label, isOn:  Binding(get: {
+                    return self.model.value as! Bool
+                }, set: { (newValue) in
+                    self.model.value = newValue
+                }))
             } else {
                 EmptyView()
             }
@@ -76,15 +89,9 @@ public struct SimpleFormField: View, Identifiable {
                 ForEach(self.model.errors, id: \.self) { error in
                     Text("\(error)").font(.footnote)
                 }
-               
+                
             }
         }
         
     }
 }
-
-//struct SimpleFormField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SimpleFormField()
-//    }
-//}
