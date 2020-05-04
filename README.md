@@ -61,6 +61,8 @@ struct ContentView: View {
             
             
         }))
+        
+        sectionTwo.model.fields.append(SimpleFormField(toggleField: "Agree to Terms", name: "agree_to_terms"))
 
         self.jamForm.model.sections.append(sectionTwo)
         
