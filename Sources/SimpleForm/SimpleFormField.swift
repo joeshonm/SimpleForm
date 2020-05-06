@@ -75,7 +75,7 @@ public struct SimpleFormField: View, Identifiable {
         VStack(alignment: .leading) {
             
             if self.model.labelPosition == .above {
-                if self.model.type == .text {
+                if self.model.type == .slider {
                     HStack {
                         Text(self.model.label)
                         Spacer()
