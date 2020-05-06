@@ -51,8 +51,10 @@ public struct SimpleFormField: View, Identifiable {
         
         do {
             try self.checkSliderRange(label: label, value: value, range: range)
-        } catch let error {
-            print(error.localizedDescription)
+        } catch SimpleFormFieldError.runtimeError(let errorMessage) {
+            print(errorMessage)
+        } catch {
+            
         }
         
         
