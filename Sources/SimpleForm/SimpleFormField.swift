@@ -44,6 +44,7 @@ public struct SimpleFormField: View, Identifiable {
     public init(slider label:String, name:String, value:Float = 0, range:ClosedRange<Float>) {
         self.model.type = .slider
         self.model.label = label
+        self.model.labelPosition = .above
         self.model.name = name
         self.model.value = value
         self.model.closedRange = range
@@ -74,7 +75,16 @@ public struct SimpleFormField: View, Identifiable {
         VStack(alignment: .leading) {
             
             if self.model.labelPosition == .above {
-                Text(self.model.label)
+                if self.model.type == .text {
+                    HStack {
+                        Text(self.model.label)
+                        Spacer()
+                        Text("\(self.model.value as! Float)")
+                    }
+                } else {
+                   Text(self.model.label)
+                }
+                
             }
             if self.model.type == .text {
                 TextField(self.model.labelPosition == .placeholder ? self.model.label : "", text: Binding(get: {
@@ -111,9 +121,7 @@ public struct SimpleFormField: View, Identifiable {
                     return self.model.value as! Float
                 }, set: { (newValue) in
                     self.model.value = newValue
-                }), in: self.model.closedRange, label: {
-                    Text("\(self.model.label)")
-                })
+                }), in: self.model.closedRange)
             } else {
                 EmptyView()
             }
