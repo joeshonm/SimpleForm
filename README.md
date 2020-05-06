@@ -41,6 +41,8 @@ struct ContentView: View {
         
         sectionOne.model.fields.append(SimpleFormField(textField: "Email", labelPosition: .above, name: "email", value: "", validation: [.required, .email], keyboardType: .emailAddress))
         
+        sectionOne.model.fields.append(SimpleFormField(slider: "Opacity", name: "opacity", value: 0.85, range: 0...1))
+        
         self.jamForm.model.sections.append(sectionOne)
         
         // Section Two
