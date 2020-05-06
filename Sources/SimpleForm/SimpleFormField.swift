@@ -47,6 +47,21 @@ public struct SimpleFormField: View, Identifiable {
         self.model.name = name
         self.model.value = value
         self.model.closedRange = range
+        
+        
+        do {
+            try self.checkSliderRange(label: label, value: value, range: range)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        
+    }
+    
+    public func checkSliderRange(label:String, value:Float, range:ClosedRange<Float>) throws {
+        if (!range.contains(value)) {
+            throw SimpleFormFieldError.runtimeError("\(label) value is out of given range.")
+        }
     }
     
     
@@ -94,7 +109,9 @@ public struct SimpleFormField: View, Identifiable {
                     return self.model.value as! Float
                 }, set: { (newValue) in
                     self.model.value = newValue
-                }), in: self.model.closedRange)
+                }), in: self.model.closedRange, label: {
+                    Text("\(self.model.label)")
+                })
             } else {
                 EmptyView()
             }
