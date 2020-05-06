@@ -14,6 +14,7 @@ public class SimpleFormFieldModel:ObservableObject {
     @Published public var labelPosition:SimpleFormFieldLabelPosition = .placeholder
     @Published public var name:String = ""
     @Published public var value:Any = ""
+    @Published public var closedRange:ClosedRange<Float> = 0...1
     @Published public var pickerSelection:Int = 0
     @Published public var options:[Any] = []
     @Published public var pickerDisplay:AnyView = AnyView(EmptyView())

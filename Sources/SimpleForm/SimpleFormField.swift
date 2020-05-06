@@ -22,7 +22,7 @@ public struct SimpleFormField: View, Identifiable {
         self.model.keyboardType = keyboardType
     }
     
-    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String,selection:Int,options:Array<Any>, display:([Any]) -> AnyView, validation:[SimpleFormValidationType] = []) {
+    public init(pickerField label:String, labelPosition:SimpleFormFieldLabelPosition = .placeholder, name:String, selection:Int, options:Array<Any>, display:([Any]) -> AnyView, validation:[SimpleFormValidationType] = []) {
         self.model.type = .picker
         self.model.label = label
         self.model.labelPosition = labelPosition
@@ -34,11 +34,19 @@ public struct SimpleFormField: View, Identifiable {
         self.model.validation = validation
     }
     
-    public init(toggleField label:String, name:String,value:Bool = false) {
+    public init(toggleField label:String, name:String, value:Bool = false) {
         self.model.type = .toggle
         self.model.label = label
         self.model.name = name
         self.model.value = value
+    }
+    
+    public init(slider label:String, name:String, value:Float = 0, range:ClosedRange<Float>) {
+        self.model.type = .slider
+        self.model.label = label
+        self.model.name = name
+        self.model.value = value
+        self.model.closedRange = range
     }
     
     
@@ -81,6 +89,12 @@ public struct SimpleFormField: View, Identifiable {
                 }, set: { (newValue) in
                     self.model.value = newValue
                 }))
+            } else if(self.model.type == .slider) {
+                Slider(value: Binding(get: {
+                    return self.model.value as! Float
+                }, set: { (newValue) in
+                    self.model.value = newValue
+                }), in: self.model.closedRange)
             } else {
                 EmptyView()
             }

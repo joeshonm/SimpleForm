@@ -12,4 +12,5 @@ public enum SimpleFormFieldType {
     case text
     case picker
     case toggle
+    case slider
 }
