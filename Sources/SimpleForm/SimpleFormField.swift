@@ -131,7 +131,7 @@ public struct SimpleFormField: View, Identifiable {
                     self.model.value = newValue
                 }), in: self.model.closedRange)
             } else if(self.model.type == .stepper){
-                Stepper("\(self.model.label) - \(self.model.value as! Float)", value: Binding(get: {
+                Stepper("\(self.model.label) - \(String(format: "%.2f", self.model.value as! Float))", value: Binding(get: {
                     return self.model.value as! Float
                 }, set: { (newValue) in
                     self.model.value = newValue
