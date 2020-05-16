@@ -41,7 +41,7 @@ public struct SimpleFormField: View, Identifiable {
         self.model.value = value
     }
     
-    public init(slider label:String, name:String, value:Float = 0, range:ClosedRange<Float>) {
+    public init(sliderField label:String, name:String, value:Float = 0, range:ClosedRange<Float>) {
         self.model.type = .slider
         self.model.label = label
         self.model.labelPosition = .above
@@ -59,6 +59,14 @@ public struct SimpleFormField: View, Identifiable {
         }
         
         
+    }
+    
+    public init(stepperField label:String, name:String, value:Float = 0, range:ClosedRange<Float>) {
+        self.model.type = .stepper
+        self.model.label = label
+        self.model.name = name
+        self.model.value = value
+        self.model.closedRange = range
     }
     
     public func checkSliderRange(label:String, value:Float, range:ClosedRange<Float>) throws {
@@ -118,6 +126,12 @@ public struct SimpleFormField: View, Identifiable {
                 }))
             } else if(self.model.type == .slider) {
                 Slider(value: Binding(get: {
+                    return self.model.value as! Float
+                }, set: { (newValue) in
+                    self.model.value = newValue
+                }), in: self.model.closedRange)
+            } else if(self.model.type == .stepper){
+                Stepper(self.model.label, value: Binding(get: {
                     return self.model.value as! Float
                 }, set: { (newValue) in
                     self.model.value = newValue

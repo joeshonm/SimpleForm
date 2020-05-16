@@ -28,7 +28,7 @@ import SimpleForm
 
 struct ContentView: View {
     
-    var jamForm = SF()
+    var simpleForm = SF()
     
     var body: some View {
         
@@ -41,9 +41,9 @@ struct ContentView: View {
         
         sectionOne.model.fields.append(SimpleFormField(textField: "Email", labelPosition: .above, name: "email", value: "", validation: [.required, .email], keyboardType: .emailAddress))
         
-        sectionOne.model.fields.append(SimpleFormField(slider: "Opacity", name: "opacity", value: 0.85, range: 0...1))
+        sectionOne.model.fields.append(SimpleFormField(sliderField: "Opacity", name: "opacity", value: 0.85, range: 0...1))
         
-        self.jamForm.model.sections.append(sectionOne)
+        self.simpleForm.model.sections.append(sectionOne)
         
         // Section Two
         let sectionTwo = SimpleFormSection()
@@ -66,14 +66,14 @@ struct ContentView: View {
         
         sectionTwo.model.fields.append(SimpleFormField(toggleField: "Agree to Terms", name: "agree_to_terms"))
 
-        self.jamForm.model.sections.append(sectionTwo)
+        self.simpleForm.model.sections.append(sectionTwo)
         
         return NavigationView {
-            jamForm
+            simpleForm
                 .navigationBarTitle("Simple Form", displayMode: .inline).navigationBarItems(trailing: Button(action: {
-                    let formValues = self.jamForm.getValues()
+                    let formValues = self.simpleForm.getValues()
                     print(formValues)
-                    let formValid = self.jamForm.isValid()
+                    let formValid = self.simpleForm.isValid()
                     print("Form Valid: ", formValid)
                 }){
                     Text("Submit")
