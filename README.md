@@ -64,7 +64,9 @@ struct ContentView: View {
             
         }))
         
-        sectionTwo.model.fields.append(SimpleFormField(toggleField: "Agree to Terms", name: "agree_to_terms"))
+        sectionTwo.model.fields.append(SimpleFormField(stepperField: "How many steps?", name: "steps", value: 20, range: 0...50))
+        
+        sectionTwo.model.fields.append(SimpleFormField(toggleField: "Agree to Terms", name: "agree_to_terms", value: false))
 
         self.simpleForm.model.sections.append(sectionTwo)
         
